@@ -9,6 +9,6 @@ class MovieApiService(
 ) {
 
     suspend fun getPopularMovies(): MoviesResponseDto {
-        return client.get("movie/popular")
+        return client.get(Endpoints.POPULAR_MOVIES)
     }
 }

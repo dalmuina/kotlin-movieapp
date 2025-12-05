@@ -1,5 +1,7 @@
 package com.dalmuina.core.network
 
+import com.dalmuina.core.network.ktor.KtorClientProvider
+import com.dalmuina.core.network.ktor.KtorNetworkClient
 import org.koin.dsl.module
 
 val networkModule = module {

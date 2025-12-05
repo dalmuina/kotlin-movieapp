@@ -1,5 +1,7 @@
-package com.dalmuina.core.network
+package com.dalmuina.core.network.ktor
 
+import com.dalmuina.core.network.NetworkClient
+import com.dalmuina.core.network.NetworkConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
