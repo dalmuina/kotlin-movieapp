@@ -1,4 +1,4 @@
-package com.dalmuina.features.movies.ui
+package com.dalmuina.features.movies.ui.movies
 
 import androidx.compose.runtime.Immutable
 import com.dalmuina.features.movies.ui.model.MovieUi

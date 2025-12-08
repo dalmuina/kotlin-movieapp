@@ -14,4 +14,8 @@ class MovieRepositoryImpl(
             .results
             .map { it.toDomain() }
     }
+
+    override suspend fun getMovieDetail(movieId: Int): Movie {
+        return api.getMovie(movieId).toDomain()
+    }
 }
