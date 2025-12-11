@@ -38,8 +38,4 @@ class MoviesViewModel(
                 }
         }
     }
-
-    fun onMovieSelected(movie: MovieUi) {
-
-    }
 }

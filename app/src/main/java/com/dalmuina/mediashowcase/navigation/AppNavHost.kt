@@ -1,6 +1,7 @@
 package com.dalmuina.mediashowcase.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,9 +13,11 @@ import com.dalmuina.features.movies.ui.movies.MoviesRoute
 
 @Composable
 fun AppNavHost(
-    navController: NavHostController = rememberNavController()
+    modifier: Modifier = Modifier,
 ) {
+    val navController: NavHostController = rememberNavController()
     NavHost(
+        modifier = modifier,
         navController = navController,
         startDestination = "movies"
     ) {
