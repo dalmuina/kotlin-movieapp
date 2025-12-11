@@ -5,6 +5,7 @@ import com.dalmuina.core.network.NetworkConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.statement.bodyAsText
 import io.ktor.util.reflect.TypeInfo
 
 class KtorNetworkClient(
@@ -16,7 +17,15 @@ class KtorNetworkClient(
         endpoint: String,
         typeInfo: TypeInfo
     ): T {
-        val response = client.get("${config.baseUrl}$endpoint")
+        val url = "${config.baseUrl}$endpoint"
+        println(">>> Calling URL: $url")
+
+        val response = client.get(url)
+
+        val raw = response.bodyAsText()
+        println(">>> RAW RESPONSE: $raw")
+
         return response.body(typeInfo)
     }
+
 }

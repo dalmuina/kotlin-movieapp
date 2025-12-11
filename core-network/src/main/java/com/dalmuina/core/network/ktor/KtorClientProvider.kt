@@ -50,6 +50,7 @@ class KtorClientProvider(
         return Interceptor { chain ->
             val original = chain.request()
             val originalUrl = original.url
+            println(">>> API KEY IN CORE-NETWORK: ${BuildConfig.TMDB_API_KEY}")
 
             val newUrl = originalUrl.newBuilder()
                 .addQueryParameter("api_key", apiKey)
