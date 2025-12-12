@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import com.dalmuina.designsystem.theme.MediaShowcaseTheme
 import com.dalmuina.mediashowcase.navigation.AppNavHost
-import com.dalmuina.mediashowcase.ui.theme.MediaShowcaseTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

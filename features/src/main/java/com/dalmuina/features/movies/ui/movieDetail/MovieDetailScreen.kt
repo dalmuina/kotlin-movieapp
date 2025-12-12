@@ -29,10 +29,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.dalmuina.designsystem.components.AnimatedScreen
+import com.dalmuina.designsystem.tokens.Spacing.l
+import com.dalmuina.designsystem.tokens.Spacing.s
 import com.dalmuina.features.movies.ui.model.MovieUi
 import com.dalmuina.features.movies.ui.movies.RatingChip
-import com.dalmuina.features.movies.ui.theme.GeneralPadding.PaddingL
-import com.dalmuina.features.movies.ui.theme.GeneralPadding.PaddingS
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -58,37 +59,39 @@ fun MovieDetailScreen(
     uiState: MovieDetailUiState,
     onBack: () -> Unit
 ) {
-    Scaffold(
-        topBar = {
-            MovieDetailTopBar(
-                title = uiState.movie?.title ?: "Movie Detail",
-                onBack = onBack
-            )
-        }
-    ) { padding ->
-        when {
-            uiState.isLoading -> Box(
-                Modifier
-                    .fillMaxSize()
-                    .padding(padding),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
+    AnimatedScreen {
+        Scaffold(
+            topBar = {
+                MovieDetailTopBar(
+                    title = uiState.movie?.title ?: "Movie Detail",
+                    onBack = onBack
+                )
             }
+        ) { padding ->
+            when {
+                uiState.isLoading -> Box(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
 
-            uiState.error != null -> Box(
-                Modifier
-                    .fillMaxSize()
-                    .padding(padding),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(text = uiState.error)
+                uiState.error != null -> Box(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = uiState.error)
+                }
+
+                uiState.movie != null -> MovieDetailContent(
+                    movie = uiState.movie,
+                    modifier = Modifier.padding(padding)
+                )
             }
-
-            uiState.movie != null -> MovieDetailContent(
-                movie = uiState.movie,
-                modifier = Modifier.padding(padding)
-            )
         }
     }
 }
@@ -120,7 +123,7 @@ fun MovieDetailContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(PaddingL)
+            .padding(l)
             .verticalScroll(rememberScrollState())
     ) {
 
@@ -134,18 +137,18 @@ fun MovieDetailContent(
             contentScale = ContentScale.Crop
         )
 
-        Spacer(Modifier.height(PaddingL))
+        Spacer(Modifier.height(l))
 
         Text(
             text = movie.title,
             style = MaterialTheme.typography.headlineSmall
         )
 
-        Spacer(Modifier.height(PaddingS))
+        Spacer(Modifier.height(s))
 
         RatingChip(rating = movie.rating)
 
-        Spacer(Modifier.height(PaddingL))
+        Spacer(Modifier.height(l))
 
         Text(
             text = movie.overview,

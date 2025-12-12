@@ -28,16 +28,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.dalmuina.designsystem.components.AnimatedScreen
+import com.dalmuina.designsystem.tokens.Dimens.posterSmallHeight
+import com.dalmuina.designsystem.tokens.Dimens.posterSmallWidth
+import com.dalmuina.designsystem.tokens.Spacing.l
+import com.dalmuina.designsystem.tokens.Spacing.m
+import com.dalmuina.designsystem.tokens.Spacing.s
+import com.dalmuina.designsystem.tokens.Spacing.xs
 import com.dalmuina.features.movies.ui.model.MovieUi
 import com.dalmuina.features.movies.ui.preview.MoviePreviewData
-import com.dalmuina.features.movies.ui.theme.GeneralMargin.MarginS
-import com.dalmuina.features.movies.ui.theme.GeneralMargin.MarginXS
-import com.dalmuina.features.movies.ui.theme.GeneralPadding.PaddingL
-import com.dalmuina.features.movies.ui.theme.GeneralPadding.PaddingM
-import com.dalmuina.features.movies.ui.theme.GeneralPadding.PaddingS
-import com.dalmuina.features.movies.ui.theme.GeneralPadding.PaddingXS
-import com.dalmuina.features.movies.ui.theme.MovieDimens.PosterHeight
-import com.dalmuina.features.movies.ui.theme.MovieDimens.PosterWidth
 import org.koin.androidx.compose.koinViewModel
 import java.util.Locale
 
@@ -60,27 +59,29 @@ fun MoviesScreen(
     onMovieClick: (MovieUi) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    when {
-        uiState.isLoading -> {
-            Box(
-                modifier
-                    .fillMaxSize(),
-                contentAlignment = Alignment.Center
-            )
-            {
-                CircularProgressIndicator()
+    AnimatedScreen {
+        when {
+            uiState.isLoading -> {
+                Box(
+                    modifier
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                )
+                {
+                    CircularProgressIndicator()
+                }
             }
-        }
 
-        uiState.error != null -> {
-            ErrorScreen(uiState.error)
-        }
+            uiState.error != null -> {
+                ErrorScreen(uiState.error)
+            }
 
-        else -> {
-            MovieList(
-                movies = uiState.movies,
-                onMovieClick = onMovieClick
-            )
+            else -> {
+                MovieList(
+                    movies = uiState.movies,
+                    onMovieClick = onMovieClick
+                )
+            }
         }
     }
 }
@@ -103,8 +104,8 @@ fun MovieList(
     onMovieClick: (MovieUi) -> Unit
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(PaddingL),
-        verticalArrangement = Arrangement.spacedBy(PaddingM)
+        contentPadding = PaddingValues(l),
+        verticalArrangement = Arrangement.spacedBy(m)
     ) {
         items(movies) { movie ->
             MovieItem(movie = movie, onClick = { onMovieClick(movie) })
@@ -122,16 +123,16 @@ fun MovieItem(
         onClick = onClick,
         modifier.fillMaxWidth()
     ) {
-        Row(Modifier.padding(PaddingM)) {
+        Row(Modifier.padding(m)) {
             AsyncImage(
                 model = movie.posterUrl,
                 contentDescription = movie.title,
                 modifier = Modifier
-                    .size(PosterWidth, PosterHeight)
+                    .size(posterSmallWidth, posterSmallHeight)
                     .clip(MaterialTheme.shapes.medium)
             )
 
-            Spacer(Modifier.width(PaddingM))
+            Spacer(Modifier.width(m))
 
             Column(
                 modifier = Modifier
@@ -143,11 +144,11 @@ fun MovieItem(
                     style = MaterialTheme.typography.titleMedium,
                     maxLines = 2
                 )
-                Spacer(modifier = Modifier.height(MarginXS))
+                Spacer(modifier = Modifier.height(xs))
 
                 RatingChip(rating = movie.rating)
 
-                Spacer(modifier = Modifier.height(MarginS))
+                Spacer(modifier = Modifier.height(s))
 
                 Text(
                     text = movie.overview,
@@ -173,7 +174,7 @@ fun RatingChip(
         Text(
             text = "⭐ %.1f".format(Locale.ROOT, rating),
             style = MaterialTheme.typography.labelMedium,
-            modifier = Modifier.padding(horizontal = PaddingS, vertical = PaddingXS)
+            modifier = Modifier.padding(horizontal = s, vertical = xs)
         )
     }
 }
