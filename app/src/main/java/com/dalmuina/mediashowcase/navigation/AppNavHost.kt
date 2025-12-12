@@ -30,7 +30,8 @@ fun AppNavHost(
             route = "movie_detail/{movieId}",
             arguments = listOf(navArgument("movieId") { type = NavType.IntType })
         ) { backStackEntry ->
-            MovieDetailRoute()
+            val movieId = backStackEntry.arguments?.getInt("movieId") ?: return@composable
+            MovieDetailRoute(movieId = movieId, onBack = { navController.popBackStack() })
         }
     }
 }

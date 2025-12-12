@@ -11,20 +11,13 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel(
-    private val getMovieDetailUseCase: GetMovieDetailUseCase,
-    savedStateHandle: SavedStateHandle
+    private val getMovieDetailUseCase: GetMovieDetailUseCase
 ) : ViewModel() {
-
-    private val movieId = savedStateHandle.get<Int>("movieId") ?: 0
 
     private val _uiState = MutableStateFlow(MovieDetailUiState())
     val uiState: StateFlow<MovieDetailUiState> = _uiState
 
-    init {
-        loadMovie()
-    }
-
-    private fun loadMovie() {
+    fun loadMovie(movieId: Int) {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
 

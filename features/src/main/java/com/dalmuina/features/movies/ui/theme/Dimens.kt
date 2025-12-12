@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.dp
 object MovieDimens {
     val PosterWidth = 90.dp
     val PosterHeight = 130.dp
+    val PosterDetailSize = 160.dp
 }
 
 object GeneralPadding {
