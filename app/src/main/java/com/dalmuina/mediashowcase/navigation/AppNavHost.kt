@@ -19,18 +19,18 @@ fun AppNavHost(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = "movies"
+        startDestination = AppRoute.Movies.route
     ) {
-        composable("movies") {
+        composable(AppRoute.Movies.route) {
             MoviesRoute(onMovieSelected = { movieId ->
-                navController.navigate("movie_detail/$movieId")
+                navController.navigate(AppRoute.MovieDetail(movieId).route)
             })
         }
         composable(
-            route = "movie_detail/{movieId}",
-            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
-        ) { backStackEntry ->
-            val movieId = backStackEntry.arguments?.getInt("movieId") ?: return@composable
+            route = AppRoute.MovieDetail.pattern,
+            arguments = listOf(navArgument(AppRoute.MovieDetail.ARG_MOVIE_ID) { type = NavType.IntType })
+        ) { entry ->
+            val movieId = entry.arguments?.getInt(AppRoute.MovieDetail.ARG_MOVIE_ID) ?: return@composable
             MovieDetailRoute(movieId = movieId, onBack = { navController.popBackStack() })
         }
     }
