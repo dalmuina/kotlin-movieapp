@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,10 +47,12 @@ fun MoviesRoute(
     viewModel: MoviesViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
+    LaunchedEffect(Unit) {
+        viewModel.loadMovies()
+    }
     MoviesScreen(
         uiState = uiState,
-        onMovieClick = {onMovieSelected(it.id)}
+        onMovieClick = { onMovieSelected(it.id) }
     )
 }
 
@@ -204,7 +207,11 @@ fun MovieListPreview() {
 }
 
 @Preview(showBackground = true, name = "MoviesScreen Light")
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, name = "MoviesScreen Dark")
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "MoviesScreen Dark"
+)
 @Composable
 fun MoviesScreenPreview() {
     MaterialTheme {

@@ -45,6 +45,16 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
+    // Unit test
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotest.assertions)
+    testImplementation(libs.turbine)
+
+    // Compose UI tests (solo módulos UI)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     // Koin para ViewModels dentro de features
     implementation(libs.koin.android)
