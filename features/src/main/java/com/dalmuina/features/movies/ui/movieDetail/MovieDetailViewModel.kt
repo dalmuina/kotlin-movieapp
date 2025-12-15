@@ -1,24 +1,26 @@
 package com.dalmuina.features.movies.ui.movieDetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dalmuina.features.movies.domain.usecase.GetMovieDetailUseCase
 import com.dalmuina.features.movies.ui.model.MovieUi
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel(
-    private val getMovieDetailUseCase: GetMovieDetailUseCase
+    private val getMovieDetailUseCase: GetMovieDetailUseCase,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Main
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MovieDetailUiState())
     val uiState: StateFlow<MovieDetailUiState> = _uiState
 
     fun loadMovie(movieId: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             _uiState.update { it.copy(isLoading = true) }
 
             runCatching { getMovieDetailUseCase(movieId) }
