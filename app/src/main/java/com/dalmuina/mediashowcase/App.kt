@@ -1,10 +1,11 @@
 package com.dalmuina.mediashowcase
 
 import android.app.Application
-import com.dalmuina.core.network.networkModule
-import com.dalmuina.features.movies.data.di.moviesDataModule
-import com.dalmuina.features.movies.domain.di.moviesDomainModule
-import com.dalmuina.features.movies.ui.di.moviesUiModule
+import com.dalmuina.data.di.moviesDataModule
+import com.dalmuina.data.network.networkModule
+import com.dalmuina.domain.di.moviesDomainModule
+
+import com.dalmuina.features.movies.di.moviesUiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
