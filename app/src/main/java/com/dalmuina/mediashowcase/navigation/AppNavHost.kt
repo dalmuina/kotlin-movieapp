@@ -8,8 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dalmuina.features.movies.ui.movieDetail.MovieDetailRoute
-import com.dalmuina.features.movies.ui.movies.MoviesRoute
+import com.dalmuina.features.movies.movieDetail.MovieDetailRoute
+import com.dalmuina.features.movies.movies.MoviesRoute
 
 @Composable
 fun AppNavHost(

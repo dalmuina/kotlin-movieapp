@@ -22,7 +22,7 @@ dependencyResolutionManagement {
 rootProject.name = "MediaShowcase"
 include(":app")
 include(":core-common")
-include(":core-network")
-include(":core-model")
 include(":features")
 include(":design-system")
+include(":data")
+include(":domain")
