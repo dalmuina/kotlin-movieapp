@@ -5,7 +5,7 @@ import com.dalmuina.MainDispatcherRule
 import com.dalmuina.core.model.Movie
 import com.dalmuina.features.data.FakeMovieRepository
 import com.dalmuina.features.movies.domain.usecase.GetPopularMoviesUseCase
-import com.dalmuina.features.movies.ui.movies.MoviesViewModel
+import com.dalmuina.features.movies.movies.MoviesViewModel
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.ExperimentalCoroutinesApi
