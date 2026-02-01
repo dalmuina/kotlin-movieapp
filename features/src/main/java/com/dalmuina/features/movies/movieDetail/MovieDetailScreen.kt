@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.dalmuina.designsystem.components.AnimatedScreen
 import com.dalmuina.designsystem.tokens.Spacing.l
@@ -45,7 +46,7 @@ fun MovieDetailRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(movieId) {
-        viewModel.loadMovie(movieId)
+        viewModel.process(MovieDetailIntent.LoadMovie(movieId))
     }
 
     MovieDetailScreen(

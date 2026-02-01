@@ -48,7 +48,7 @@ fun MoviesRoute(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) {
-        viewModel.loadMovies()
+        viewModel.process(MoviesIntent.LoadMovies)
     }
     MoviesScreen(
         uiState = uiState,
