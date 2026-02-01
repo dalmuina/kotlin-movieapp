@@ -14,21 +14,29 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel(
-    private val getMovieDetailUseCase: GetMovieDetailUseCase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.Main
+    private val getMovieDetailUseCase: GetMovieDetailUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MovieDetailUiState())
     val uiState: StateFlow<MovieDetailUiState> = _uiState
 
-    fun loadMovie(movieId: Int) {
-        viewModelScope.launch(dispatcher) {
-            _uiState.update { it.copy(isLoading = true) }
+
+    fun process(intent: MovieDetailIntent){
+        when(intent){
+            is MovieDetailIntent.LoadMovie -> loadMovie(intent.movieId)
+        }
+    }
+
+    private fun loadMovie(movieId: Int) {
+        viewModelScope.launch {
+            reduce {
+                copy(isLoading = true)
+            }
 
             getMovieDetailUseCase(movieId)
                 .onSuccess { movie ->
-                    _uiState.update {
-                        it.copy(
+                    reduce {
+                        copy(
                             isLoading = false,
                             movie = MovieUi.fromDomain(movie),
                             error = null
@@ -36,13 +44,21 @@ class MovieDetailViewModel(
                     }
                 }
                 .onError { error ->
-                    _uiState.update {
-                        it.copy(
+                    reduce {
+                        copy(
                             isLoading = false,
                             error = error.toString()
                         )
                     }
                 }
+        }
+    }
+
+    private inline fun reduce (
+        reducer: MovieDetailUiState.() -> MovieDetailUiState
+    ) {
+        _uiState.update {
+            it.reducer()
         }
     }
 }
