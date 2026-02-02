@@ -29,7 +29,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     // Unit test
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)
     testImplementation(libs.kotest.assertions)

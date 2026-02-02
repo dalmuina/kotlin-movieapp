@@ -33,6 +33,12 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core-common"))
 
+    // Test
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotest.assertions)
+
     // Ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
