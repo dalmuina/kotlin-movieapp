@@ -1,16 +1,17 @@
-package com.dalmuina.data.remote
+package com.dalmuina.data.network.ktor
 
 import com.dalmuina.domain.model.MovieError
 import com.dalmuina.domain.model.Result
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.ServerResponseException
+import kotlinx.io.IOException
 
 suspend fun <T> safeApiCall(
     call: suspend () -> T
 ): Result<T, MovieError> {
     return try {
         Result.Success(call())
-    } catch (e: kotlinx.io.IOException) {
+    } catch (e: IOException) {
         Result.Error(MovieError.Network)
     } catch (e: ClientRequestException) {
         when (e.response.status.value) {

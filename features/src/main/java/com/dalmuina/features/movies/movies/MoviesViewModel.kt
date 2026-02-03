@@ -25,9 +25,7 @@ class MoviesViewModel(
 
     private fun loadMovies() {
         viewModelScope.launch {
-
             reduce { copy(isLoading = true, error = null) }
-
             getPopularMoviesUseCase()
                 .onSuccess { movies ->
                     reduce {

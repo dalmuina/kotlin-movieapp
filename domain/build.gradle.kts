@@ -28,6 +28,12 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
 
+    // Unit test
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotest.assertions)
+
     // Koin
     implementation(libs.koin.core)
 }
