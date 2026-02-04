@@ -6,8 +6,6 @@ import com.dalmuina.domain.model.onError
 import com.dalmuina.domain.model.onSuccess
 import com.dalmuina.domain.usecase.GetMovieDetailUseCase
 import com.dalmuina.features.movies.model.MovieUi
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -21,8 +19,8 @@ class MovieDetailViewModel(
     val uiState: StateFlow<MovieDetailUiState> = _uiState
 
 
-    fun process(intent: MovieDetailIntent){
-        when(intent){
+    fun process(intent: MovieDetailIntent) {
+        when (intent) {
             is MovieDetailIntent.LoadMovie -> loadMovie(intent.movieId)
         }
     }
@@ -54,7 +52,7 @@ class MovieDetailViewModel(
         }
     }
 
-    private inline fun reduce (
+    private inline fun reduce(
         reducer: MovieDetailUiState.() -> MovieDetailUiState
     ) {
         _uiState.update {

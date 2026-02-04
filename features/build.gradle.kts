@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -50,6 +51,8 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.kotest.assertions)
     testImplementation(libs.turbine)
+
+    testImplementation(testFixtures(project(":domain")))
 
     // Compose UI tests (solo módulos UI)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

@@ -1,13 +1,16 @@
-package com.dalmuina.features.movies
+package com.dalmuina.domain.testdata
 
 import com.dalmuina.domain.model.Movie
 
+private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
+
 object MovieTestData {
+
     val sampleMovie = Movie(
         id = 1,
         title = "The Matrix",
-        overview = "A hacker discovers reality is a simulation and joins the resistance.",
-        posterUrl = "",
+        posterUrl = "$IMAGE_BASE_URL/matrix.jpg",
+        overview = "A hacker discovers reality is a simulation.",
         rating = 8.7
     )
 

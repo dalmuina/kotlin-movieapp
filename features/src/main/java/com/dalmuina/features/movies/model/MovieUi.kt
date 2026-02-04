@@ -23,7 +23,3 @@ data class MovieUi(
         }
     }
 }
-
-private fun buildPosterUrl(path: String): String =
-    "https://image.tmdb.org/t/p/w500$path"
-

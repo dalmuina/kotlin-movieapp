@@ -3,10 +3,10 @@ package com.dalmuina.features.movies.movieDetail
 import app.cash.turbine.test
 import com.dalmuina.MainDispatcherRule
 import com.dalmuina.domain.MovieRepository
+import com.dalmuina.domain.testdata.MovieTestData
 import com.dalmuina.domain.model.MovieError
 import com.dalmuina.domain.model.Result
 import com.dalmuina.domain.usecase.GetMovieDetailUseCase
-import com.dalmuina.features.movies.MovieTestData
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.mockk
