@@ -1,8 +1,8 @@
 package com.dalmuina.data.repository
 
 import com.dalmuina.MovieDtoTestData
-import com.dalmuina.MovieTestData
 import com.dalmuina.data.remote.MovieRemoteDataSource
+import com.dalmuina.domain.testdata.MovieTestData
 import com.dalmuina.domain.model.MovieError
 import com.dalmuina.domain.model.Result
 import io.kotest.matchers.shouldBe
