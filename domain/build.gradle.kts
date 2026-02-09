@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -14,10 +15,21 @@ android {
         minSdk = 24
     }
 
+    testFixtures {
+        enable = true
+    }
+
+    sourceSets {
+        getByName("testFixtures") {
+            java.srcDir("src/testFixtures/java")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
@@ -33,6 +45,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockk)
     testImplementation(libs.kotest.assertions)
+    testImplementation(testFixtures(project(":domain")))
 
     // Koin
     implementation(libs.koin.core)

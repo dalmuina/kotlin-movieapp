@@ -1,8 +1,8 @@
 package com.dalmuina.domain
 
-import com.dalmuina.MovieTestData
 import com.dalmuina.domain.model.MovieError
 import com.dalmuina.domain.model.Result
+import com.dalmuina.domain.testdata.MovieTestData
 import com.dalmuina.domain.usecase.GetMovieDetailUseCase
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery

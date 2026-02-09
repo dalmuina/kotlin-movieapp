@@ -14,14 +14,14 @@ suspend fun <T> safeApiCall(
         Result.Success(call())
     } catch (e: CancellationException) {
         throw e
-    } catch (e: IOException) {
+    } catch (_: IOException) {
         Result.Error(MovieError.Network)
     } catch (e: ClientRequestException) {
         when (e.response.status.value) {
             404 -> Result.Error(MovieError.NotFound)
             else -> Result.Error(MovieError.Unknown)
         }
-    } catch (e: ServerResponseException) {
+    } catch (_: ServerResponseException) {
         Result.Error(MovieError.Network)
     }
 }
