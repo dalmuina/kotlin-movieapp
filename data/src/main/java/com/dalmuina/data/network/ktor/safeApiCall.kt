@@ -4,6 +4,7 @@ import com.dalmuina.domain.model.MovieError
 import com.dalmuina.domain.model.Result
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.ServerResponseException
+import io.ktor.utils.io.CancellationException
 import kotlinx.io.IOException
 
 suspend fun <T> safeApiCall(
@@ -11,6 +12,8 @@ suspend fun <T> safeApiCall(
 ): Result<T, MovieError> {
     return try {
         Result.Success(call())
+    } catch (e: CancellationException) {
+        throw e
     } catch (_: IOException) {
         Result.Error(MovieError.Network)
     } catch (e: ClientRequestException) {
