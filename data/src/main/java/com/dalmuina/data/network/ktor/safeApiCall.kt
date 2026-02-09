@@ -21,7 +21,7 @@ suspend fun <T> safeApiCall(
             404 -> Result.Error(MovieError.NotFound)
             else -> Result.Error(MovieError.Unknown)
         }
-    } catch (e: ServerResponseException) {
+    } catch (_: ServerResponseException) {
         Result.Error(MovieError.Network)
     }
 }
