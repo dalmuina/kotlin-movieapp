@@ -3,7 +3,6 @@ package com.dalmuina.data.repository
 import com.dalmuina.data.mapper.toDomain
 import com.dalmuina.data.remote.MovieRemoteDataSource
 import com.dalmuina.domain.MovieRepository
-import com.dalmuina.domain.model.AppError
 import com.dalmuina.domain.model.Movie
 import com.dalmuina.domain.model.MovieError
 import com.dalmuina.domain.model.Result

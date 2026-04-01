@@ -45,7 +45,7 @@ fun MovieDetailRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(movieId) {
-        viewModel.loadMovie(movieId)
+        viewModel.process(MovieDetailIntent.LoadMovie(movieId))
     }
 
     MovieDetailScreen(
