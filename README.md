@@ -1,6 +1,10 @@
-# MediaShowcase Android
+# Movie Demo Android
 
 Android app built with Kotlin and Jetpack Compose that displays popular movies using The Movie Database (TMDB) API.
+
+## 📹 Demo Video
+
+[Watch the demo](https://drive.google.com/file/d/1ngotZokTtMojcxq0RFO-HC_OrRwlO37M/view?usp=sharing)
 
 ## Features
 
