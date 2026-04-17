@@ -17,6 +17,7 @@ mockk = "1.14.9"
 kotest = "6.1.11"
 turbine = "1.2.1"
 detekt = "1.23.8"
+jetbrainsKotlinJvm = "2.3.20"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -70,3 +71,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 detekt = {id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+
