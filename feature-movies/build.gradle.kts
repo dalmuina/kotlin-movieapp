@@ -1,15 +1,12 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.detekt)
 }
 
 android {
-    namespace = "com.dalmuina.features"
+    namespace = "com.dalmuina.feature.movies"
     compileSdk = 36
 
     defaultConfig {
@@ -26,14 +23,11 @@ android {
     }
 
     kotlin {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-        }
+        jvmToolchain(17)
     }
 }
 
 dependencies {
-    implementation(project(":core-common"))
     implementation(project(":domain"))
     implementation(project(":design-system"))
 
@@ -59,7 +53,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     // Koin para ViewModels dentro de features
-    implementation(libs.koin.android)
     implementation(libs.koin.compose)
 
     implementation(libs.coil.compose)
