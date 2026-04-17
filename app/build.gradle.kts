@@ -1,8 +1,6 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.detekt)
 }
@@ -18,19 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
     }
-
-    detekt {
-        toolVersion = "1.23.6"
-        config = files("$rootDir/config/detekt/detekt.yml")
-        buildUponDefaultConfig = true
-        allRules = false
-
-        // para CI
-        autoCorrect = false
-    }
-
 
     buildTypes {
         release {
@@ -41,25 +27,30 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-        }
-    }
+
     buildFeatures {
         compose = true
     }
 }
 
+detekt {
+    toolVersion = "1.23.8"
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    buildUponDefaultConfig = true
+    allRules = false
+    autoCorrect = false
+}
+
 dependencies {
 
-    implementation(project(":core-common"))
+    implementation(project(":di"))
     implementation(project(":design-system"))
-    implementation(project(":features"))
+    implementation(project(":feature-movies"))
     implementation(project(":data"))
     implementation(project(":domain"))
 

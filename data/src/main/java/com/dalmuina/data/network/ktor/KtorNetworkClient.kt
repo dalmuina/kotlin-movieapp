@@ -19,12 +19,9 @@ class KtorNetworkClient(
         typeInfo: TypeInfo
     ): T {
         val url = "${config.baseUrl}$endpoint"
-        println(">>> Calling URL: $url")
 
         val response = client.get(url)
-
         val raw = response.bodyAsText()
-        println(">>> RAW RESPONSE: $raw")
 
         return response.body(typeInfo)
     }

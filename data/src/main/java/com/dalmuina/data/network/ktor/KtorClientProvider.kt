@@ -1,7 +1,7 @@
 package com.dalmuina.data.network.ktor
 
 
-import com.dalmuina.core.network.BuildConfig
+import com.dalmuina.data.BuildConfig
 import com.dalmuina.data.network.NetworkConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
@@ -39,7 +39,7 @@ class KtorClientProvider(
                         ignoreUnknownKeys = true
                         isLenient = true
                         prettyPrint = false
-                    }
+                    },
                 )
             }
         }
@@ -51,7 +51,6 @@ class KtorClientProvider(
         return Interceptor { chain ->
             val original = chain.request()
             val originalUrl = original.url
-            println(">>> API KEY IN CORE-NETWORK: ${BuildConfig.TMDB_API_KEY}")
 
             val newUrl = originalUrl.newBuilder()
                 .addQueryParameter("api_key", apiKey)

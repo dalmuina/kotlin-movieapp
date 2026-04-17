@@ -21,8 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "MediaShowcase"
 include(":app")
-include(":core-common")
-include(":features")
+include(":di")
+include(":feature-movies")
 include(":design-system")
 include(":data")
 include(":domain")
