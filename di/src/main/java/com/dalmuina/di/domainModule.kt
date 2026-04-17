@@ -1,4 +1,5 @@
-package com.dalmuina.domain.di
+package com.dalmuina.di
+
 
 import com.dalmuina.domain.usecase.GetMovieDetailUseCase
 import com.dalmuina.domain.usecase.GetPopularMoviesUseCase
@@ -12,10 +13,16 @@ val moviesDomainModule = module {
     single<CoroutineDispatcher>(named("IO")) { Dispatchers.IO }
 
 
-    factory { GetPopularMoviesUseCase(
-        repository = get(),
-        dispatcher = get(named("IO"))) }
-    factory { GetMovieDetailUseCase(
-        repository= get(),
-        dispatcher = get(named("IO"))) }
+    factory {
+        GetPopularMoviesUseCase(
+            repository = get(),
+            dispatcher = get(named("IO"))
+        )
+    }
+    factory {
+        GetMovieDetailUseCase(
+            repository = get(),
+            dispatcher = get(named("IO"))
+        )
+    }
 }

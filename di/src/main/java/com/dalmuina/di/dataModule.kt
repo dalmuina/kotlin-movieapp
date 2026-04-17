@@ -1,4 +1,4 @@
-package com.dalmuina.data.di
+package com.dalmuina.di
 
 
 import com.dalmuina.data.remote.MovieApiService

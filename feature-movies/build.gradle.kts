@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dalmuina.features"
+    namespace = "com.dalmuina.feature.movies"
     compileSdk = 36
 
     defaultConfig {
@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core-common"))
     implementation(project(":domain"))
     implementation(project(":design-system"))
 
@@ -59,7 +58,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     // Koin para ViewModels dentro de features
-    implementation(libs.koin.android)
     implementation(libs.koin.compose)
 
     implementation(libs.coil.compose)

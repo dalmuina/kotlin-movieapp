@@ -57,9 +57,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core-common"))
+    implementation(project(":di"))
     implementation(project(":design-system"))
-    implementation(project(":features"))
+    implementation(project(":feature-movies"))
     implementation(project(":data"))
     implementation(project(":domain"))
 

@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dalmuina.core.network"
+    namespace = "com.dalmuina.data"
     compileSdk = 36
 
     defaultConfig {
@@ -32,7 +32,6 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":core-common"))
 
     // Test
     testImplementation(libs.junit)

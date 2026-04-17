@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dalmuina.core.common"
+    namespace = "com.dalmuina.di"
     compileSdk = 36
 
     defaultConfig {
@@ -25,4 +25,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":design-system"))
+    implementation(project(":feature-movies"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    // Koin
+    implementation(libs.koin.android)
+
+    implementation(libs.androidx.core.ktx)
+
+    implementation(libs.ktor.client.okhttp)
 }

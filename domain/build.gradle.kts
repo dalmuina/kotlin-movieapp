@@ -47,6 +47,4 @@ dependencies {
     testImplementation(libs.kotest.assertions)
     testImplementation(testFixtures(project(":domain")))
 
-    // Koin
-    implementation(libs.koin.core)
 }
